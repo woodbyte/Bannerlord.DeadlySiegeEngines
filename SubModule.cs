@@ -1,7 +1,6 @@
 ﻿using HarmonyLib;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using static TaleWorlds.MountAndBlade.Agent;
 
 namespace Bannerlord.DeadlySiegeEngines
 {
@@ -17,7 +16,7 @@ namespace Bannerlord.DeadlySiegeEngines
         [HarmonyPatch(nameof(Agent.Die))]
         internal class Patch01
         {
-            static void Prefix(ref Blow b, KillInfo overrideKillInfo = KillInfo.Invalid)
+            static void Prefix(ref Blow b)
             {
                 if (b.IsMissile && b.DamageType == DamageTypes.Blunt && b.WeaponRecord.WeaponClass == WeaponClass.Boulder)
                 {
